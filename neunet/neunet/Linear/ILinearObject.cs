@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Neunet.Linear
 {
-    public interface ILinearObject<T> : ILinearAdditive<T, T>, ILinearMultiplicative<T, T>, IEnumerable<double>
+    public interface ILinearObject<T> : ILinearAdditive<T, T>, ILinearMultiplicative<T, T>, IEnumerable<double>, IMap<T, double>
     {
-        T Map(Func<double, double> func);
     }
 }

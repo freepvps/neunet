@@ -5,11 +5,11 @@ using Neunet.Linear;
 
 namespace Neunet
 {
-    public class ElementwizeLayer<T> : ILayer<T, T> where T : ILinearObject<T>
+    public class ElementwizeLayer<T, TFunc> : ILayer<T, T> where T : IMap<T, TFunc>
     {
-        public Func<double, double> Function { get; }
+        public Func<TFunc, TFunc> Function { get; }
 
-        public ElementwizeLayer(Func<double, double> function)
+        public ElementwizeLayer(Func<TFunc, TFunc> function)
         {
             Function = function;
         }
@@ -19,9 +19,10 @@ namespace Neunet
             return input.Map(Function);
         }
     }
-    public class ElementwizeLayer : ElementwizeLayer<Vector>
+    public class ElementwizeLayer<T> : ElementwizeLayer<T, T>
+        where T : IMap<T, T>
     {
-        public ElementwizeLayer(Func<double, double> function) : base(function)
+        public ElementwizeLayer(Func<T, T> function) : base(function)
         {
         }
     }

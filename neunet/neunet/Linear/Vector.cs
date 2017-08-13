@@ -5,7 +5,12 @@ using System.Text;
 
 namespace Neunet.Linear
 {
-    public class Vector : ILinearObject<Vector>, ILinearMultiplicative<Vector, double>, ILinearAdditive<double, Vector>, ILinearMultiplicative<double, Vector>
+    public class Vector : 
+        ILinearObject<Vector>, 
+        ILinearMultiplicative<Vector, double>,
+        ILinearAdditive<double, Vector>,
+        ILinearMultiplicative<double, Vector>,
+        IMap<Vector, Vector>
     {
         private double[] Values;
         public int Dimension { get => Values.Length; }
@@ -124,6 +129,11 @@ namespace Neunet.Linear
         public override string ToString()
         {
             return $"[ {string.Join(", ", Values)} ]";
+        }
+
+        public Vector Map(Func<Vector, Vector> func)
+        {
+            return func(this);
         }
     }
 }

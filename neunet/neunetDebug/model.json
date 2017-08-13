@@ -1,37 +1,41 @@
 ﻿{
-    "layers": [
-        {
-            "Type": "Linear",
-            "Biases": [
-                -1.23736,
-                1.75192
-            ],
-            "Weights": [
-                [
-                    -1.89449,
-                    2.0657
-                ],
-                [
-                    -2.87019,
-                    3.18721
-                ]
-            ]
-        },
-        {
-            "Type": "Elementwise",
-            "Function": "LogisticSigmoid"
-        },
-        {
-            "Type": "Linear",
-            "Biases": [
-                1.50037
-            ],
-            "Weights": [
-                [
-                    2.87502,
-                    -2.51932
-                ]
-            ]
-        }
-    ]
+  "layers": [
+    {
+      "Type": "Linear",
+      "Biases": [
+        -1.23736,
+        1.75192
+      ],
+      "Weights": [
+        [
+          -1.89449,
+          2.0657
+        ],
+        [
+          -2.87019,
+          3.18721
+        ]
+      ]
+    },
+    {
+      "Type": "Elementwise",
+      "Function": "LogisticSigmoid"
+    },
+    {
+      "Type": "Linear",
+      "Biases": [
+        1.50037
+      ],
+      "Weights": [
+        [
+          2.87502,
+          -2.51932
+        ]
+      ]
+    },
+    {
+      "Type": "Elementwise",
+      "Function": "Ramp"
+    }
+  ]
 }

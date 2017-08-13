@@ -11,7 +11,9 @@ namespace Neunet.Linear
         ILinearAdditive<double, Matrix>, 
         ILinearMultiplicative<double, Matrix>, 
         ILinearMultiplicative<Vector, Vector>, 
-        IFlatten<Vector>
+        IFlatten<Vector>,
+        IMap<Matrix, Vector>,
+        IMap<Matrix, Matrix>
     {
         private Vector[] Vectors { get; }
         public int Height { get => Vectors.Length; }
@@ -208,6 +210,16 @@ namespace Neunet.Linear
                 }
             }
             return result;
+        }
+
+        public Matrix Map(Func<Vector, Vector> func)
+        {
+            return new Matrix(Vectors.Select(func).ToArray());
+        }
+
+        public Matrix Map(Func<Matrix, Matrix> func)
+        {
+            return func(this);
         }
     }
 }

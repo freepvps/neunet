@@ -8,4 +8,8 @@ namespace Neunet.Serialization
     {
         public Layer[] Layers { get; set; }
     }
+    public class ChainModel<T> : ChainModel
+    {
+        public T Extra { get; set; }
+    }
 }
